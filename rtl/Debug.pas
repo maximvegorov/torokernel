@@ -299,12 +299,14 @@ begin
   write_portb (0, BASE_COM_PORT+1);
   write_portb (1, BASE_COM_PORT);
   write_portb (3, BASE_COM_PORT+3);
-  WriteConsoleF ('Toro on /Vdebug mode/n using /VCOM1/n\n',[]);
-  WriteDebug('Initialization of debugging console.\n',[]);
+  WriteSerial('Hola %d\n',[0]);
+ // hlt;
+ // WriteConsoleF ('Toro on /Vdebug mode/n using /VCOM1/n\n',[]);
+ // WriteDebug('Initialization of debugging console.\n',[]);
   {$IFDEF DebugCrash}
-     WriteDebug('Crash dumping is Enabled\n',[]);
+   //  WriteDebug('Crash dumping is Enabled\n',[]);
   {$ELSE}
-     WriteDebug('Crash dumping is Disable\n',[]);
+    // WriteDebug('Crash dumping is Disable\n',[]);
   {$ENDIF}
   {$IFDEF DCC} System.DebugTraceProc := @DebugTrace; {$ENDIF}
 end;

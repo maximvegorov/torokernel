@@ -44,6 +44,8 @@ begin
   {$IFDEF ProfileBootTime}
     ShutdownInQemu;
   {$ENDIF}
+  DebugInit;
+  Reboot;
   WriteConsoleF('/c/VLoading Toro ...\n/n',[]);
   ArchInit;
   FillChar(CPU, sizeof(CPU), 0);
