@@ -599,14 +599,7 @@ begin
   CaptureInt(EXC_INT1, @ExceptINT1);
   for i:=0 to 10 do
      breaks[i] := 0 ;
-
-  while true do
-  begin
-    if DbgSerialGetC = '+' then
-      break;
-  end;
-
-  DbgHandler(false);
+  int3;
 end;
 
 end.

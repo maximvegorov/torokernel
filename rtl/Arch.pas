@@ -143,6 +143,7 @@ procedure WriteBarrier;assembler;{$ifdef SYSTEMINLINE}inline;{$endif}
 function GetKernelParam(I: LongInt): Pchar;
 function read_ioapic_reg(offset: dword): dword;
 procedure write_ioapic_reg(offset, val: dword);
+procedure Int3;assembler;{$ifdef SYSTEMINLINE}inline;{$endif}
 
 const
   MP_START_ADD = $e0000;
@@ -1346,6 +1347,11 @@ procedure EnableNMI;
 begin
   write_portb(read_portb($70) and $7F, $70);
   NOP;
+end;
+
+procedure Int3;assembler;nostackframe;{$ifdef SYSTEMINLINE}inline;{$endif}
+asm
+  int 3
 end;
 
 procedure ArchInit;
